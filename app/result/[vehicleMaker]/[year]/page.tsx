@@ -4,7 +4,7 @@ import React from "react";
 import { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import { Loader } from "@/app/components/Loader/Loader";
-import { log } from "console";
+import { getModelsURL } from "@/constants";
 
 interface VehicleModel {
   Model_Name: string;
@@ -27,9 +27,7 @@ export default function ResultPage() {
       setError(null);
 
       try {
-        const response = await fetch(
-          `https://vpic.nhtsa.dot.gov/api/vehicles/GetModelsForMakeIdYear/makeId/${vehicleMaker}/modelyear/${year}?format=json`,
-        );
+        const response = await fetch(getModelsURL(vehicleMaker, year));
 
         if (!response.ok) {
           throw new Error('Failed to fetch vehicle models.');

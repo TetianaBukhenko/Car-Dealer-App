@@ -1,7 +1,5 @@
 import React from "react";
-import { Suspense } from 'react';
 import { DropDownWrapper } from './components/Dropdowns/DropDownWrapper';
-import { Loader } from './components/Loader/Loader';
 
 export default async function Home() {
   return (

@@ -2,7 +2,7 @@
 
 import React from "react";
 import { VehicleMaker } from '@/types/VehicleMaker';
-import { filterValue } from '@/utils/filterValue';
+import { filterValue, filterVehicles } from '@/utils/filterValue';
 import { useMemo, useState } from 'react';
 import { Input } from '../../components/Input';
 
@@ -21,11 +21,7 @@ export const MakersDropDown: React.FC<Props> = ({
   const [isShown, setIsShown] = useState(false);
 
   const sortedVehicles = useMemo(() => {
-    return filterValue<VehicleMaker>({
-      elements: vehicleMakers,
-      key: 'Make_Name',
-      query: vehicleMaker,
-    });
+    return filterVehicles(vehicleMakers, vehicleMaker);
   }, [vehicleMakers, vehicleMaker]);
 
   function handleValueChange(newValue: string) {
@@ -35,9 +31,9 @@ export const MakersDropDown: React.FC<Props> = ({
 
   function getSelectedMakerName(makerID: number) {
     const maker: VehicleMaker[] = vehicleMakers.filter(
-      (maker) => maker.Make_ID === makerID,
+      (maker) => maker.MakeId === makerID,
     );
-    return maker[0]?.Make_Name || '';
+    return maker[0]?.MakeName || '';
   }
 
   return (
@@ -65,17 +61,17 @@ export const MakersDropDown: React.FC<Props> = ({
             onMouseLeave={() => setIsShown(false)}
           >
             {sortedVehicles.length > 0 ? (
-              <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 max-h-48  overflow-x-hidden overflow-y-scroll">
+              <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 max-h-48  overflow-x-hidden overflow-y-auto">
                 {sortedVehicles.map((vehicle) => (
                   <li
-                    key={vehicle.Make_ID}
-                    className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${vehicle.Make_ID === selectedMaker ? 'bg-gray-600 text-white' : ''}`}
+                    key={vehicle.MakeId}
+                    className={`block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white ${vehicle.MakeId === selectedMaker ? 'bg-gray-600 text-white' : ''}`}
                     onClick={() => {
-                      chooseVehicleMaker(vehicle.Make_ID);
+                      chooseVehicleMaker(vehicle.MakeId);
                       setIsShown(false);
                     }}
                   >
-                    {vehicle.Make_Name}
+                    {vehicle.MakeName}
                   </li>
                 ))}
               </ul>

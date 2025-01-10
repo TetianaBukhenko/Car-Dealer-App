@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { VehicleMaker } from '@/types/VehicleMaker';
 import { DropDownSection } from './DropDownSection';
 import { Loader } from "../Loader/Loader";
+import { makersURL } from "@/constants";
 
 export function DropDownWrapper() {
   const [vehicleModels, setVehicleModels] = useState < VehicleMaker[]>([]);
@@ -16,9 +17,7 @@ export function DropDownWrapper() {
       setError(null);
 
       try {
-        const response = await fetch(
-          'https://vpic.nhtsa.dot.gov/api/vehicles/getallmakes?format=json',
-        );
+        const response = await fetch(makersURL);
 
         if (!response.ok) {
           throw new Error('Failed to fetch vehicle models.');

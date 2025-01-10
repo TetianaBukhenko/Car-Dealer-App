@@ -1,3 +1,5 @@
+import { VehicleMaker } from "@/types/VehicleMaker";
+
 export const filterValue = <T>({
   elements,
   key,
@@ -14,3 +16,14 @@ export const filterValue = <T>({
     return normalizedName.includes(normalizedQuery);
   });
 };
+
+
+export const filterVehicles = (vehicles: VehicleMaker[], query: string) => {
+  return vehicles.filter((el) => {
+    const normalizedName = el.MakeName.toLowerCase();
+    const normalizedQuery = query.toLowerCase().trim();
+
+    return normalizedName.includes(normalizedQuery);
+  });
+};
+

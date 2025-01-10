@@ -33,7 +33,7 @@ export const DropDownSection = ({
       </section>
       <Link
         href={`result/${vehicleMaker}/${selectedYear}`}
-        className={` bg-blue-700 mt-3 p-2 rounded text-white ${selectedYear === 0 && vehicleMaker === 0 ? 'disabled pointer-events-none  text-gray-300 ' : ''}`}
+        className={` bg-blue-700 mt-3 p-2 rounded text-white ${selectedYear == 0 || vehicleMaker == 0 ? 'disabled pointer-events-none  bg-blue-500 text-gray-500 ' : ''}`}
       >
         Next
       </Link>
