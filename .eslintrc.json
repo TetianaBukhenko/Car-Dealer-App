@@ -21,7 +21,7 @@
     "react/jsx-key": "warn",
     "react/jsx-uses-react": "off",
     "react/jsx-uses-vars": "error",
-    "no-unused-vars": "warn"
+    "no-unused-vars": "off"
   },
   "settings": {
     "react": {
