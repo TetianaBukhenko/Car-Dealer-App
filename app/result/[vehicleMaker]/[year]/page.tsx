@@ -64,7 +64,7 @@ export default function ResultPage() {
           Vehicle Models for {vehicleMaker} ({year})
         </h1>
         {vehicleModels.length > 0 ? (
-                  <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 max-h-48  overflow-x-hidden overflow-y-scroll">
+                  <ul className="py-2 text-sm text-gray-700 dark:text-gray-200 max-h-48">
                   {vehicleModels.map((model) => (
                     <li
                       key={model.Model_Name}

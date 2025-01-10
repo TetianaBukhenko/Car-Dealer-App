@@ -10,9 +10,7 @@ export default async function Home() {
         <h1 className="pb-4 text-center text-xl font-bold">
           The Car Dealer App
         </h1>
-        <Suspense fallback={<Loader />}>
-          <DropDownWrapper />
-        </Suspense>
+        <DropDownWrapper />
       </section>
     </main>
   );
